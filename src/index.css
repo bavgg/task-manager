@@ -4,10 +4,15 @@
 
 @layer components {
   body {
-    @apply font-[300] text-base text-[#6C7180];
+    @apply font-[300] text-base text-[var(--text)] bg-[var(--bg)];
   }
 
   :root {
-    --accent: #38bdf8;
+    --accent: #DDA15E;
+    --text: #283618;
+    --bg: #FEFAE0;
+
+    --secondary: #606C38;
+    --tertiary: #BC6C25;
   }
 }
