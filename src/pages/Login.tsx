@@ -1,4 +1,7 @@
-import { SubmitHandler, useForm, FieldValues } from "react-hook-form";
+import {  useForm } from "react-hook-form";
+import { AuthContext } from "../contexts/AuthProvider";
+import { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface LoginFormInputs {
   email: string;
@@ -11,6 +14,8 @@ function Login() {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginFormInputs>(); // Use the defined type here
+
+  
 
   function submitHandler(data: LoginFormInputs) {
     console.log(data);
@@ -45,7 +50,7 @@ function Login() {
               placeholder="username@mail.com"
               className="px-4 py-2 border border-[var(--text)] rounded-md mt-1 w-full"
             />
-            {errors.email && <p>{errors.email.message as string}</p>}
+            {errors.email && <p className="text-[var(--tertiary)]">{errors.email.message as string}</p>}
           </div>
       
           <div>
@@ -53,11 +58,12 @@ function Login() {
             <br />
             <input
               id="password"
+              type="password"
               {...register("password", { required: "Password is required" })}
               placeholder="password"
               className="px-4 py-2 border border-[var(--text)] rounded-md mt-1 w-full"
             />
-            {errors.password && <p>{errors.password.message as string}</p>}
+            {errors.password && <p className="text-[var(--tertiary)]">{errors.password.message as string}</p>}
           </div>
       
           <button type="submit" className="mt-2 bg-[var(--secondary)] text-white px-2 py-1 rounded-md">Submit</button>

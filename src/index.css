@@ -10,9 +10,11 @@
   :root {
     --accent: #DDA15E;
     --text: #283618;
-    --bg: #FEFAE0;
+    --bg: #FFF;
+    --neutral: #F3F4F6;
 
     --secondary: #606C38;
+    --secondary-tint: #BCC892;
     --tertiary: #BC6C25;
   }
 }
