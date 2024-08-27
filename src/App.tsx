@@ -12,6 +12,7 @@ import InProgress from "./pages/InProgress";
 import Todo from "./pages/Todo";
 import Team from "./pages/Team";
 import Trash from "./pages/Trash";
+import Test from "./pages/Test";
 
 function App() {
   const context = useContext(AuthContext);
@@ -86,6 +87,8 @@ function App() {
             </Layout>
           }
         />
+
+        <Route path="/test" element={<Test />} />
         {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </>

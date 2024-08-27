@@ -11,7 +11,11 @@
     --accent: #DDA15E;
     --text: #283618;
     --bg: #FFF;
-    --neutral: #F3F4F6;
+    --neutral: #D1D5DC; 
+    /* #F3F4F6 */
+
+    --tinted-secondary: #b0b69c;
+    --tinted-accent: #f5e3cf;
 
     --secondary: #606C38;
     --secondary-tint: #BCC892;

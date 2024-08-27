@@ -9,7 +9,7 @@ import {
   TaskAlt,
 } from "@mui/icons-material";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -54,12 +54,16 @@ const linkData = [
 ];
 
 export default function Sidebar() {
-  const [selectedLink, setSelectedLink ] = useState('Dashboard');
+  const [selectedLink, setSelectedLink ] = useState({label: 'Dashboard', url: '/'});
   const navigate = useNavigate();
 
+  useEffect(() => {
+    navigate(selectedLink.url);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedLink])
+
   function handleLink(label: string, url: string) {
-    setSelectedLink(label);
-    navigate(url);
+    setSelectedLink({label, url});
   }
 
   return (
@@ -75,7 +79,7 @@ export default function Sidebar() {
       {/* links */}
       <div className="flex flex-col gap-8">
         {linkData.map((link) => (
-          <div onClick={() => handleLink(link.label, link.link)} className={`${selectedLink === link.label && 'bg-[var(--secondary)] text-white '} flex gap-2 p-2 hover:bg-[var(--secondary-tint)] hover:text-[var(--text)] cursor-pointer rounded-md items-center`}>
+          <div onClick={() => handleLink(link.label, link.link)} className={`${selectedLink.label === link.label && 'bg-[var(--secondary)] text-white '} flex gap-2 p-2 hover:bg-[var(--secondary-tint)] hover:text-[var(--text)] cursor-pointer rounded-md items-center`}>
             <div className="text-xs">{link.icon}</div>
             <div>{link.label}</div>
           </div>

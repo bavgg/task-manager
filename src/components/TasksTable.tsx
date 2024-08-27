@@ -83,7 +83,7 @@ function TasksTable() {
               {/* buttons */}
               <div className="flex items-center gap-2 px-2 py-2  border-b border-[var(--neutral)]">
                 <button className=" h-fit">Edit</button>
-                <button className=" h-fit bg-[var(--secondary-tint)] rounded-md text-white px-1">
+                <button className=" h-fit bg-[var(--tertiary)] rounded-md text-white px-1">
                   Delete
                 </button>
               </div>
