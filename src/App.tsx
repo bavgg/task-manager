@@ -1,11 +1,12 @@
 import "./App.css";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
 
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "./contexts/AuthProvider";
 import Dashboard from "./pages/Dashboard";
+
+import Layout from "./components/Layout";
+import Tasks from "./pages/Tasks";
 
 function App() {
   const context = useContext(AuthContext);
@@ -24,9 +25,23 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={
+            <Layout>
+              <Dashboard />
+            </Layout>
+          }
+        />
+        <Route
+          path="/tasks"
+          element={
+            <Layout>
+              <Tasks />
+            </Layout>
+          }
+        />
+        {/* <Route path="/login" element={<Login />} /> */}
       </Routes>
     </>
   );

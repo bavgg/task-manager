@@ -59,7 +59,7 @@ export default function Sidebar() {
   }
 
   return (
-    <div className=" hidden sm:block text-[var(--text)] p-4 w-[300px] h-screen  overflow-auto">
+    <div className=" hidden lg:block text-[var(--text)] py-4 md:px-4 lg:px-16 w-auto h-screen  overflow-auto">
       {/* header */}
       <div className="flex gap-2 text-white items-center mb-16">
         <div className="bg-[var(--secondary)] flex justify-center items-center rounded-full p-1">
