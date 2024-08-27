@@ -10,52 +10,56 @@ import {
 } from "@mui/icons-material";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 
 const fontSize = 'small';
 const linkData = [
   {
     label: "Dashboard",
-    link: "dashboard",
+    link: "/",
     icon: <Dashboard fontSize={fontSize}/>,
   },
   {
     label: "Tasks",
-    link: "tasks",
+    link: "/tasks",
     icon: <Task fontSize={fontSize}/>,
   },
   {
     label: "Completed",
-    link: "completed/completed",
+    link: "/completed-tasks",
     icon: <TaskAlt fontSize={fontSize}/>,
   },
   {
     label: "In Progress",
-    link: "in-progress/in progress",
+    link: "/inprogress-tasks",
     icon: <PendingActionsOutlined fontSize={fontSize}/>,
   },
   {
     label: "To Do",
-    link: "todo/todo",
+    link: "/todo-tasks",
     icon: <PendingActionsOutlined fontSize={fontSize}/>,
   },
   {
     label: "Team",
-    link: "team",
+    link: "/team",
     icon: <Group fontSize={fontSize} />,
   },
   {
     label: "Trash",
-    link: "trashed",
+    link: "/trash",
     icon: <Delete fontSize={fontSize} />,
   },
 ];
 
 export default function Sidebar() {
   const [selectedLink, setSelectedLink ] = useState('Dashboard');
+  const navigate = useNavigate();
 
-  function handleLink(label: string) {
+  function handleLink(label: string, url: string) {
     setSelectedLink(label);
+    navigate(url);
   }
 
   return (
@@ -71,7 +75,7 @@ export default function Sidebar() {
       {/* links */}
       <div className="flex flex-col gap-8">
         {linkData.map((link) => (
-          <div onClick={() => handleLink(link.label)} className={`${selectedLink === link.label && 'bg-[var(--secondary)] text-white '} flex gap-2 p-2 hover:bg-[var(--secondary-tint)] hover:text-[var(--text)] cursor-pointer rounded-md items-center`}>
+          <div onClick={() => handleLink(link.label, link.link)} className={`${selectedLink === link.label && 'bg-[var(--secondary)] text-white '} flex gap-2 p-2 hover:bg-[var(--secondary-tint)] hover:text-[var(--text)] cursor-pointer rounded-md items-center`}>
             <div className="text-xs">{link.icon}</div>
             <div>{link.label}</div>
           </div>

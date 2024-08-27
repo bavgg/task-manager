@@ -7,6 +7,11 @@ import Dashboard from "./pages/Dashboard";
 
 import Layout from "./components/Layout";
 import Tasks from "./pages/Tasks";
+import CompletedTasks from "./pages/CompletedTasks";
+import InProgress from "./pages/InProgress";
+import Todo from "./pages/Todo";
+import Team from "./pages/Team";
+import Trash from "./pages/Trash";
 
 function App() {
   const context = useContext(AuthContext);
@@ -38,6 +43,46 @@ function App() {
           element={
             <Layout>
               <Tasks />
+            </Layout>
+          }
+        />
+        <Route
+          path="/completed-tasks"
+          element={
+            <Layout>
+              <CompletedTasks />
+            </Layout>
+          }
+        />
+        <Route
+          path="/inprogress-tasks"
+          element={
+            <Layout>
+              <InProgress />
+            </Layout>
+          }
+        />
+        <Route
+          path="/todo-tasks"
+          element={
+            <Layout>
+              <Todo />
+            </Layout>
+          }
+        />
+        <Route
+          path="/team"
+          element={
+            <Layout>
+              <Team />
+            </Layout>
+          }
+        />
+        <Route
+          path="/trash"
+          element={
+            <Layout>
+              <Trash />
             </Layout>
           }
         />

@@ -42,9 +42,8 @@ function Dashboard() {
               <div className="grid grid-cols-[1fr,0.33fr,0.33fr,0.33fr] gap-2 py-2 border-t border-b border-[var(--neutral)]">
                 <div className="flex gap-2 items-center">
                   <div
-                    className={`h-4 w-4 rounded-full bg-[${getStageColor(
-                      task.stage
-                    )}]`}
+                    style={{ backgroundColor: getStageColor(task.stage)}}
+                    className={`h-4 w-4 rounded-full `}
                   ></div>
                   <div>{task.title}</div>
                 </div>
@@ -52,9 +51,8 @@ function Dashboard() {
                 <div className="relative flex gap-1">
                   {task.team.map((t, index) => (
                     <div
-                      className={`relative left-0 -mr-2 h-7 w-7 flex justify-center items-center rounded-full p-2 bg-[${getInitialColor(
-                        index
-                      )}] text-white text-xs font-[500]`}
+                      style={{ backgroundColor: getInitialColor(index) }}
+                      className={`relative left-0 -mr-2 h-7 w-7 flex justify-center items-center rounded-full p-2  text-white text-xs font-[500]`}
                     >
                       {getInitials(t.name)}
                     </div>
