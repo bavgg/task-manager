@@ -1,5 +1,6 @@
+
 import { Check, UnfoldMore } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import clsx from "clsx";
 
 export function InputMenuV1({
@@ -13,6 +14,23 @@ export function InputMenuV1({
 }) {
   // const [selectedItem, setSelectedItem] = useState(data[0]);
   const [menuListOpen, setMenuListOpen] = useState(false);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      const target = event.target as HTMLElement;
+      if (!target.closest("[data-exclude-click]")) {
+        setMenuListOpen(false);
+      }
+    }
+
+    // Attach the event listener to the document
+    document.addEventListener("mousedown", handleClickOutside);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   function handleItemMenu(item: string) {
     setSelectedItem(item);
