@@ -14,8 +14,8 @@ export function InputMenuV1({
   // const [selectedItem, setSelectedItem] = useState(data[0]);
   const [menuListOpen, setMenuListOpen] = useState(false);
 
-  function handleItemMenu(stage: string) {
-    setSelectedItem(stage);
+  function handleItemMenu(item: string) {
+    setSelectedItem(item);
     setMenuListOpen(false);
   }
   function handleItemSelect() {

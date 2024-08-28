@@ -46,6 +46,7 @@ export default function CreateTaskForm() {
   function handleTeam() {
     setMenuTeamOpen(!menuTeamOpen);
   }
+  
 
   return (
     <div className="bg-white p-8 w-[500px]">
@@ -55,6 +56,7 @@ export default function CreateTaskForm() {
         <label>Task Title</label>
         <br />
         <input
+          required
           type=""
           placeholder="Task Title"
           className="border border-[var(--neutral)] px-2 py-1 rounded-md mb-4 w-full"
@@ -75,7 +77,7 @@ export default function CreateTaskForm() {
             <UnfoldMore />
           </div>
 
-          {/* users */}
+          {/* users menu */}
           <div
             className={` z-10 bg-white select-none absolute top-[34px] w-full border border-[var(--neutral)] px-2 py-2 rounded-md mb-4 text-sm ${
               menuTeamOpen ? "flex" : "hidden"
@@ -110,12 +112,14 @@ export default function CreateTaskForm() {
             <br />
             <InputMenuV1 data={STAGES} selectedItem={selectedStage}  setSelectedItem={setSelectedStage}/>
           </div>
-
+          
+          {/* task date */}
           <div>
-            {/* task date */}
+            
             <label>Task Date</label>
             <br />
             <input
+              required
               type="date"
               className="border border-[var(--neutral)] px-2 py-1 rounded-md mb-4 w-full"
             />
