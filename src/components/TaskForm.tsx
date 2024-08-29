@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { summary } from "../assets/data";
 
 import { InputMenuV1 } from "./specials/InputMenuV1";
@@ -8,18 +8,35 @@ const STAGES = ["TODO", "IN PROGRESS", "COMPLETED"];
 const PRIORIRY = ["HIGH", "MEDIUM", "NORMAL", "LOW"];
 
 export default function TaskForm() {
+  // form data
   const [selectedTeam, setSelectedTeam] = useState(["New User"]);
   const [selectedStage, setSelectedStage] = useState("TODO");
   const [selectedPriority, setSelectedPriority] = useState("NORMAL");
+  const taskTitleRef = useRef<HTMLInputElement>(null);
+  const taskDateRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
+  function handleCancel(event: React.MouseEvent) {
+    event.preventDefault();
+  }
+
+  function handleSubmit(event: React.MouseEvent) {
+    event.preventDefault();
+    const formEleement = formRef.current;
+    formEleement?.reportValidity();
+  }
   return (
-    <div className="bg-white p-8 w-[500px]">
+    <div
+      data-exclude-click
+      className=" rounded-md m-auto bg-white p-8 w-[500px] z-10 shadow-[0_5px_40px_rgba(0,0,0,.4)] "
+    >
       <div className="font-medium mb-4">Add Task</div>
 
-      <form>
+      <form ref={formRef}>
         <label>Task Title</label>
         <br />
         <input
+          ref={taskTitleRef}
           required
           type=""
           placeholder="Task Title"
@@ -54,6 +71,7 @@ export default function TaskForm() {
             <label>Task Date</label>
             <br />
             <input
+              ref={taskDateRef}
               required
               type="date"
               className="border border-[var(--neutral)] px-2 py-1 rounded-md mb-4 w-full"
@@ -73,8 +91,13 @@ export default function TaskForm() {
         {/* buttons */}
         <div className="py-8 flex justify-end">
           <div className="flex gap-4">
-            <button>Cancel</button>
-            <button className="bg-[var(--secondary)] px-4 py-1 text-white rounded-md h-fit">
+            <button data-cancel onClick={handleCancel}>
+              Cancel
+            </button>
+            <button
+              onClick={handleSubmit}
+              className="bg-[var(--secondary)] px-4 py-1 text-white rounded-md h-fit"
+            >
               Submit
             </button>
           </div>

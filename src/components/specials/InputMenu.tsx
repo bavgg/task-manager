@@ -32,6 +32,10 @@ export default function InputMenu({
       if (!target.closest("[data-exclude-click]")) {
         setMenuTeamOpen(false);
       }
+
+      if (!target.closest("[data-exclude-click2]")) {
+        setMenuTeamOpen(false);
+      }
     }
 
     // Attach the event listener to the document
@@ -70,6 +74,7 @@ export default function InputMenu({
 
       {/* users menu */}
       <div
+        data-exclude-click2
         className={` z-10 bg-white select-none absolute top-[34px] w-full border border-[var(--neutral)] px-2 py-2 rounded-md mb-4 text-sm ${
           menuTeamOpen ? "flex" : "hidden"
         } flex-col gap-4`}

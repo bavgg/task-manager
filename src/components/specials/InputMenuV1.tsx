@@ -21,6 +21,9 @@ export function InputMenuV1({
       if (!target.closest("[data-exclude-click]")) {
         setMenuListOpen(false);
       }
+      if (!target.closest("[data-exclude-click2]")) {
+        setMenuListOpen(false);
+      }
     }
 
     // Attach the event listener to the document
@@ -52,6 +55,7 @@ export function InputMenuV1({
 
       {/* lists */}
       <div
+        data-exclude-click2
         className={` z-10 bg-white select-none absolute top-[34px] w-full border border-[var(--neutral)] px-2 py-2 rounded-md mb-4 text-sm ${
           menuListOpen ? "flex" : "hidden"
         } flex-col gap-4`}
